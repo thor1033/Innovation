@@ -26,30 +26,20 @@ namespace FindPlayers.StaticServices
                 return false;
             }
 
-            var client = new RestClient("https://aarsnorm.dk/api/v1/");
-            var request = new RestRequest("status/permissions?email=" + User.Username
-             + "&password=" + User.Password, Method.GET);
-            var respond = await client.ExecuteTaskAsync<Permissions>(request);
-
             User.FullInfo = User.Username + " " + User.Password;
 
-            if (respond.Data.Error == false)
-            {
-                Application.Current.Properties["username"] = User.Username;
-                await Application.Current.SavePropertiesAsync();
+            Application.Current.Properties["username"] = User.Username;
+            await Application.Current.SavePropertiesAsync();
 
-                var p = new NavigationParameters
+            var p = new NavigationParameters
                 {
                     { "CurrentDate", DateTime.Now.ToString("dd-MM-yyyy") },
                     { "User", User },
-                    { "Permissions", respond.Data.Result[0] }
+
                 };
 
-                var result = await _navigationService.NavigateAsync("/MenuPage/NavigationPage/MainPage", p);
-                return result.Success;
-            }
-            vm.Errmsg = "Fejl: " + respond.Data.Error_Message;
-            return false;
+            var result = await _navigationService.NavigateAsync("/MenuPage/NavigationPage/MainPage", p);
+            return true;
         }
     }
 }
