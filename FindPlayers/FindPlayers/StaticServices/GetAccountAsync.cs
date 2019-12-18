@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace FindPlayers.StaticServices
 {
-    class MoedetiderSS {
+    class GetAccountAsync {
         public static async Task<LoLAccount> GetLolAccountAsync(User credentials) {
             LoLAccount acc = new LoLAccount();
             var client = new RestClient("https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/");

@@ -62,7 +62,7 @@ namespace FindPlayers.ViewModels
             if (CrossConnectivity.Current.IsConnected)
             {
                 IsExecuting = true;
-                RiotAccount = new NotifyTaskCompletion<LoLAccount>(MoedetiderSS.GetLolAccountAsync(_credentials));
+                RiotAccount = new NotifyTaskCompletion<LoLAccount>(GetAccountAsync.GetLolAccountAsync(_credentials));
                 IsExecuting = false;
                 
                 
