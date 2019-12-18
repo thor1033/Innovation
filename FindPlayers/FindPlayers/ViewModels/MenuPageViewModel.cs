@@ -38,9 +38,6 @@ namespace FindPlayers.ViewModels
             {
                 new MDMenuItem("Log ud", "Logud.png", "LoginPage"),
                 new MDMenuItem("Main Page", "KollegerIcon.png", "MainPage"),
-                //new MDMenuItem("Kalender", "Kalender.png", "KalenderPage"),
-                //new MDMenuItem("Status", "Status.png", "StatusPage"),
-                //new MDMenuItem("Kollegaer", "KollegerIcon.png", "ColleaguePage")
             };
         }
 
@@ -55,7 +52,6 @@ namespace FindPlayers.ViewModels
                 {
                     { "CurrentDate", currentDate },
                     { "User", user },
-                    { "Permissions", permissions }
                 };
 
             var result = await _navigationService.NavigateAsync("NavigationPage/" + item.Parameter, p);
@@ -66,11 +62,10 @@ namespace FindPlayers.ViewModels
         }
 
         public override void OnNavigatedTo(INavigationParameters parameters) {
-            if (parameters.ContainsKey("User") && parameters.ContainsKey("CurrentDate") && parameters.ContainsKey("Permissions"))
+            if (parameters.ContainsKey("User") && parameters.ContainsKey("CurrentDate"))
             {
                 user = parameters.GetValue<User>("User");
                 currentDate = parameters.GetValue<string>("CurrentDate");
-                permissions = parameters.GetValue<PermissionsResult>("Permissions");
             }
             else
             {

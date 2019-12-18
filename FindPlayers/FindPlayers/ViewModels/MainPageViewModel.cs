@@ -69,9 +69,9 @@ namespace FindPlayers.ViewModels
             }
             else
             {
-                IsExecuting = true;
-                App.Current.MainPage.DisplayAlert("Ingen forbindelse", "kan ikke opdatere tider", "OK");
-                IsExecuting = false;
+                //IsExecuting = true;
+                //App.Current.MainPage.DisplayAlert("Ingen forbindelse", "kan ikke opdatere tider", "OK");
+                //IsExecuting = false;
             }
         }
     }
