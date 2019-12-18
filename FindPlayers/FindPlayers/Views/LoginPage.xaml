@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             BackgroundColor="WhiteSmoke"
+             x:Class="FindPlayers.Views.LoginPage">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="entryFelt" TargetType="Entry">
+                <Setter Property="PlaceholderColor" Value="WhiteSmoke" />
+                <Setter Property="TextColor" Value="#1e1e1e" />
+                <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+                <Setter Property="VerticalOptions" Value="End" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="30">
+                <Image Source="wolf2.png" VerticalOptions="CenterAndExpand"/>
+                <Entry Placeholder="Skriv brugernavn" Text="{Binding User.Username, Mode=TwoWay}" Style="{StaticResource entryFelt}" PlaceholderColor="LightGray"/>
+                <Entry x:Name="entryKodeord" Placeholder="Skriv kodeord" Text="{Binding User.Password, Mode=TwoWay}"
+                   IsPassword="true" Style="{StaticResource entryFelt}" PlaceholderColor="LightGray"/>
+                <Button Text="LOG IND" BackgroundColor="#1e1e1e" TextColor="WhiteSmoke" 
+                    Command="{Binding LoginCommand}" VerticalOptions="End" IsEnabled="{Binding IsExecuting.IsCompleted}"/>
+                <Label Text="{Binding Errmsg, Mode=TwoWay}" TextColor="IndianRed" VerticalOptions="End"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

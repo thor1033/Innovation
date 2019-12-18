@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:prism="http://prismlibrary.com"
+                  prism:ViewModelLocator.AutowireViewModel="True"
+                  xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+                  xmlns:converters="clr-namespace:FindPlayers.ViewModels.Converters;assembly=FindPlayers"
+                  BackgroundColor="#1e1e1e"
+                  x:Class="FindPlayers.Views.MenuPage">
+
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu" BackgroundColor="#1e1e1e">
+            <ListView BackgroundColor="#1e1e1e" SeparatorVisibility="None" ItemsSource="{Binding MenuItems}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                <ListView.Behaviors>
+                    <b:EventToCommandBehavior EventName="ItemTapped" EventArgsConverter="{converters:ItemTappedEventArgsConverter}" Command="{Binding NavigateCommand}"/>
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="5,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding IconSource}" />
+                                <Label Grid.Column="1" Text="{Binding Text}" TextColor="WhiteSmoke" VerticalOptions="FillAndExpand"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    
+</MasterDetailPage>

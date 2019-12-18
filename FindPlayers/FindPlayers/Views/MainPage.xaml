@@ -1,11 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="FindPlayers.Views.MainPage"
-             Title="{Binding Title}">
+             Title="Account Info">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="TiderStyle" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="TextColor" Value="#1e1e1e" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
-    </StackLayout>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="{Binding RiotAccount.Result.Name}" Style="{StaticResource TiderStyle}"></Label>
+                <Label Text="{Binding RiotAccount.Result.SummonerLevel}" Style="{StaticResource TiderStyle}" Grid.Column="1"></Label>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
 
 </ContentPage>
