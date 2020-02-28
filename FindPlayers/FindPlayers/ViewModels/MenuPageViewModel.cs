@@ -26,7 +26,6 @@ namespace FindPlayers.ViewModels
 
         private User user;
         private string currentDate;
-        private PermissionsResult permissions;
 
         private DelegateCommand<MDMenuItem> navigateCommand;
         public DelegateCommand<MDMenuItem> NavigateCommand => navigateCommand ?? (navigateCommand = new DelegateCommand<MDMenuItem>(Navigate));
@@ -38,6 +37,7 @@ namespace FindPlayers.ViewModels
             {
                 new MDMenuItem("Log ud", "Logud.png", "LoginPage"),
                 new MDMenuItem("Main Page", "KollegerIcon.png", "MainPage"),
+                new MDMenuItem("Tournaments", "Logud.png", "TournamentPage")
             };
         }
 

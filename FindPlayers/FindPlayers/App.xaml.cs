@@ -28,6 +28,7 @@ namespace FindPlayers {
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
             containerRegistry.RegisterForNavigation<MenuPage, MenuPageViewModel>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<TournamentPage, TournamentPageViewModel>();
         }
     }
 }
